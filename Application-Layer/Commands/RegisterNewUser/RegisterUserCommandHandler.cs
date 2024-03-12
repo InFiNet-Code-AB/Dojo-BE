@@ -9,7 +9,7 @@ namespace Application_Layer.Commands.RegisterNewUser
     {
         private readonly IUserRepository _userRepository;
 
-        public  RegisterUserCommandHandler(IUserRepository userRepository) 
+        public RegisterUserCommandHandler(IUserRepository userRepository)
         {
             _userRepository = userRepository;
         }
