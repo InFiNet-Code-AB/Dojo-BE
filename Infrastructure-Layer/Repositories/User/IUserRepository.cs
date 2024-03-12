@@ -5,6 +5,6 @@ namespace Infrastructure_Layer.Repositories.User
     public interface IUserRepository
     {
         Task<UserModel> RegisterUser(UserModel newUser);
-        //Write  rest of IUserRepository methods!
+        
     }
 }
