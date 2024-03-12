@@ -12,7 +12,6 @@
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.0" />
     <PackageReference Include="MediatR" Version="12.2.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
-    <PackageReference Include="Serilog" Version="3.1.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,11 +21,7 @@
   <ItemGroup>
     <Folder Include="Commands\DeleteUser\" />
     <Folder Include="Commands\UpdateUser\" />
-<<<<<<< HEAD
-    <Folder Include="Queries\Login\" />
-=======
     <Folder Include="Commands\Register\" />
->>>>>>> origin/development
     <Folder Include="Queries\GetUserByEmail\" />
   </ItemGroup>
 
