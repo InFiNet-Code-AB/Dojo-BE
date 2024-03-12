@@ -18,7 +18,18 @@ namespace Application_Layer.Queries.GetUserById
 
         public async Task<IdentityUser> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
         {
-            return await _userManager.FindByIdAsync(request.UserId);
+            if (string.IsNullOrWhiteSpace(request.UserId))
+            {
+                throw new ArgumentException("UserId får inte vara tomt.");
+            }
+
+            var user = await _userManager.FindByIdAsync(request.UserId);
+            if (user == null)
+            {
+                throw new KeyNotFoundException($"En användare med ID {request.UserId} hittades inte.");
+            }
+
+            return user;
         }
     }
 }
