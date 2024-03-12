@@ -4,7 +4,6 @@ using AutoMapper;
 using Domain_Layer.Models.UserModel;
 using Infrastructure_Layer;
 using Infrastructure_Layer.Database;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
