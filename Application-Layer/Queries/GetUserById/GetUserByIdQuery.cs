@@ -11,7 +11,7 @@ namespace Application_Layer.Queries.GetUserById
     public class GetUserByIdQuery : IRequest<IdentityUser>
     {
         public string UserId { get; private set; }
-        public GetUserByIdQuery(string userId) 
+        public GetUserByIdQuery(string userId)
         {
             UserId = userId;
         }
