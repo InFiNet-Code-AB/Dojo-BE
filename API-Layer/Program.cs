@@ -1,6 +1,4 @@
 ﻿using Application_Layer;
-using Application_Layer.AutoMaper;
-using AutoMapper;
 using Domain_Layer.Models.UserModel;
 using Infrastructure_Layer;
 using Infrastructure_Layer.Database;
