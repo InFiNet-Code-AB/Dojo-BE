@@ -54,6 +54,36 @@ namespace Application_Layer.Controllers
             }
         }
 
+        //[HttpGet("{id}")]
+        //public async Task<IActionResult> GetUserById(string id)
+        //{
+        //    var user = await _mediator.Send(new GetUserByIdCommand(id));
+
+        //    if (user != null)
+        //    {
+        //        return Ok(user); 
+        //    }
+        //    else
+        //    {
+        //        return NotFound($"Användaren med ID {id} hittades inte.");
+        //    }
+        //}
+
+        //[HttpGet("by-email/{email}")]
+        //public async Task<IActionResult> GetUserByEmail(string email)
+        //{
+        //    var user = await _mediator.Send(new GetUserByEmailCommand(email));
+
+        //    if (user != null)
+        //    {
+        //        return Ok(user);  // Eller anpassa till en DTO som tidigare nämnt
+        //    }
+        //    else
+        //    {
+        //        return NotFound($"Användaren med e-postadressen {email} hittades inte.");
+        //    }
+        //}
+
         [HttpGet]
         [Route("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
