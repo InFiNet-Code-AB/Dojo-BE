@@ -17,13 +17,6 @@ builder.Services.AddSwaggerGen(c =>
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dojo BE", Version = "v1" });
 });
 
-// AutoMaper Configuretion
-var config = new MapperConfiguration(cfg =>
-{
-    cfg.AddProfile<UserProfile>();
-});
-builder.Services.AddSingleton(config.CreateMapper());
-
 //  Add our own services (layers) here
 builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructureLayer(builder.Configuration);
