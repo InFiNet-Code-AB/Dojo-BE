@@ -1,4 +1,6 @@
 ﻿using Application_Layer;
+using Application_Layer.AutoMaper;
+using AutoMapper;
 using Domain_Layer.Models.UserModel;
 using Infrastructure_Layer;
 using Infrastructure_Layer.Database;
@@ -15,6 +17,13 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Dojo BE", Version = "v1" });
 });
+
+// AutoMaper Configuretion
+var config = new MapperConfiguration(cfg =>
+{
+    cfg.AddProfile<UserProfile>();
+});
+builder.Services.AddSingleton(config.CreateMapper());
 
 //  Add our own services (layers) here
 builder.Services.AddApplicationLayer();

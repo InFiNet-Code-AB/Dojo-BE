@@ -1,4 +1,5 @@
-﻿using Domain_Layer.Models.UserModel;
+﻿using AutoMapper;
+using Domain_Layer.Models.UserModel;
 using Infrastructure_Layer.Repositories.User;
 using MediatR;
 using Serilog;
@@ -8,10 +9,12 @@ namespace Application_Layer.Commands.RegisterNewUser
     internal class RegisterUserCommandHandler : IRequestHandler<RegisterUserCommand, UserModel>
     {
         private readonly IUserRepository _userRepository;
+        private readonly IMapper _mapper;
 
-        public RegisterUserCommandHandler(IUserRepository userRepository)
+        public RegisterUserCommandHandler(IUserRepository userRepository, IMapper mapper)
         {
             _userRepository = userRepository;
+            _mapper = mapper;
         }
         public async Task<UserModel> Handle(RegisterUserCommand request, CancellationToken cancellationToken)
         {
@@ -21,14 +24,8 @@ namespace Application_Layer.Commands.RegisterNewUser
             }
             try
             {
-                var userToCreate = new UserModel
-                {
-                    FirstName = request.NewUser.FirstName,
-                    LastName = request.NewUser.LastName,
-                    Email = request.NewUser.Email,
-                    PasswordHash = request.NewUser.Password,
-                    Role = "Admin"
-                };
+                var userToCreate = _mapper.Map<UserModel>(request.NewUser);
+                userToCreate.Role = "Admin"; // Role is not part of NewUser
 
                 var createdUser = await _userRepository.RegisterUser(userToCreate);
 
