@@ -37,7 +37,6 @@ namespace Application_Layer.Commands.RegisterNewUser
                 Log.Error("An error occurred while registering the user.", ex);
                 throw;
             }
-
         }
     }
 }

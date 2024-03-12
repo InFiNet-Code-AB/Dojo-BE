@@ -14,7 +14,6 @@ namespace Application_Layer
 
             services.AddValidatorsFromAssembly(assembly);
 
-            // AutoMaper Configuretion
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.AddProfile<UserProfile>();
