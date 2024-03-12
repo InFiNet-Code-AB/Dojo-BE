@@ -22,7 +22,11 @@
   <ItemGroup>
     <Folder Include="Commands\DeleteUser\" />
     <Folder Include="Commands\UpdateUser\" />
+<<<<<<< HEAD
     <Folder Include="Queries\Login\" />
+=======
+    <Folder Include="Commands\Register\" />
+>>>>>>> origin/development
     <Folder Include="Queries\GetUserByEmail\" />
   </ItemGroup>
 
