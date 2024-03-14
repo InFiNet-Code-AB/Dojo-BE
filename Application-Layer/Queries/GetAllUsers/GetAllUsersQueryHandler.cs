@@ -1,28 +1,22 @@
 ﻿using Domain_Layer.Models.UserModel;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application_Layer.Queries.GetAllUsers
 {
-    //public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserModel>>
-    //{
-    //    private readonly IUserRepository _userRepository;
+    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserModel>>
+    {
+        private readonly UserManager<UserModel> _userManager;
 
-    //    public GetAllUsersQueryHandler(IUserRepository userRepository)
-    //    {
-    //        _userRepository = userRepository;
-    //    }
+        public GetAllUsersQueryHandler(UserManager<UserModel> userManager)
+        {
+            _userManager = userManager;
+        }
 
-    //    public async Task<IEnumerable<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
-    //    {
-    //        try
-    //        {
-    //            return await _userRepository.Users.ToListAsync(cancellationToken);
-    //        }
-    //        catch (Exception ex)
-    //        {
-    //            throw new InvalidOperationException("Fail to pull all users!", ex);
-    //        }
-    //    }
-    //}
+        public async Task<IEnumerable<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+        {
+            return await _userManager.Users.ToListAsync(cancellationToken);
+        }
+    }
 }
