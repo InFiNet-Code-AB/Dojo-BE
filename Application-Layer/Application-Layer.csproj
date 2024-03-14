@@ -23,6 +23,7 @@
     <Folder Include="Commands\DeleteUser\" />
     <Folder Include="Commands\UpdateUser\" />
     <Folder Include="Commands\Register\" />
+    <Folder Include="Queries\GetAllUsers\" />
     <Folder Include="Queries\GetUserByEmail\" />
   </ItemGroup>
 
