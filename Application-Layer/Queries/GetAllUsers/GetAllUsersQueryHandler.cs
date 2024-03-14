@@ -4,18 +4,25 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application_Layer.Queries.GetAllUsers
 {
-    public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserModel>>
-    {
-        private readonly UserManager<UserModel> _userManager;
+    //public class GetAllUsersQueryHandler : IRequestHandler<GetAllUsersQuery, IEnumerable<UserModel>>
+    //{
+    //    private readonly IUserRepository _userRepository;
 
-        public GetAllUsersQueryHandler(UserManager<UserModel> userManager)
-        {
-            _userManager = userManager;
-        }
+    //    public GetAllUsersQueryHandler(IUserRepository userRepository)
+    //    {
+    //        _userRepository = userRepository;
+    //    }
 
-        public async Task<IEnumerable<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
-        {
-            return await _userManager.Users.ToListAsync(cancellationToken);
-        }
-    }
+    //    public async Task<IEnumerable<UserModel>> Handle(GetAllUsersQuery request, CancellationToken cancellationToken)
+    //    {
+    //        try
+    //        {
+    //            return await _userRepository.Users.ToListAsync(cancellationToken);
+    //        }
+    //        catch (Exception ex)
+    //        {
+    //            throw new InvalidOperationException("Fail to pull all users!", ex);
+    //        }
+    //    }
+    //}
 }
