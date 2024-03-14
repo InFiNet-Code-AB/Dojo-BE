@@ -36,5 +36,15 @@ namespace Infrastructure_Layer.Repositories.User
             var user = await _userManager.FindByEmailAsync(email);
             return user!;
         }
+
+        public Task<UserModel> UpdateUser(UserModel updateUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<UserModel> UpdateUserAsync(UserModel updateUser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
