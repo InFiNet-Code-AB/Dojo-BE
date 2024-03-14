@@ -40,4 +40,3 @@ namespace Application_Layer.Queries.GetUserByEmail
     //    }
     //}
 }
-}
