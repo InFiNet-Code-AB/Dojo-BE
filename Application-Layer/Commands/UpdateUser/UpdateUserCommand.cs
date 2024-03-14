@@ -1,12 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Application_Layer.DTO_s;
+using Domain_Layer.Models.UserModel;
+using MediatR;
 
 namespace Application_Layer.Commands.UpdateUser
 {
-    public class UpdateUserCommand
+    public class UpdateUserCommand : IRequest<UserModel>
     {
+        public UpdatingUserDTO UpdatingUserInfo { get; }
+        public string Email { get; }
+        public UpdateUserCommand(UpdatingUserDTO updateUser, string email)
+        {
+            UpdatingUserInfo = updateUser;
+            Email = email;
+        }
     }
 }
