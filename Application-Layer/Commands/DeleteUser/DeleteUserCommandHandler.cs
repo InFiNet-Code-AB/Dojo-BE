@@ -9,8 +9,8 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Application_Layer.Commands.DeleteUser
 {
-    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, bool>
-    {
+    //public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, bool>
+    //{
         //private readonly IUserRepository _userRepository;
 
         //public DeleteUserCommandHandler(IUserRepository userRepository)
@@ -42,5 +42,5 @@ namespace Application_Layer.Commands.DeleteUser
         //    }
         //}
 
-    }
+    //}
 }
