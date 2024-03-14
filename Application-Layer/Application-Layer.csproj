@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\DeleteUser\" />
     <Folder Include="Commands\UpdateUser\" />
     <Folder Include="Queries\GetUserByEmail\" />
   </ItemGroup>
