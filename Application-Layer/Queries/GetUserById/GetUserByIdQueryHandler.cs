@@ -26,7 +26,7 @@ namespace Application_Layer.Queries.GetUserById
             var user = await _userManager.FindByIdAsync(request.UserId);
             if (user == null)
             {
-                throw new KeyNotFoundException($"En användare med ID {request.UserId} hittades inte.");
+                throw new KeyNotFoundException($"User with ID {request.UserId} was not found!");
             }
 
             return user;
