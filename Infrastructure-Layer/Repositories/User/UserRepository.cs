@@ -32,5 +32,10 @@ namespace Infrastructure_Layer.Repositories.User
 
             return user!;
         }
+
+        public Task<UserModel> UpdateUser(UserModel updateUser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
