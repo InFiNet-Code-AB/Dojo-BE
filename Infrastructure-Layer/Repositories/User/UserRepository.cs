@@ -18,7 +18,6 @@ namespace Infrastructure_Layer.Repositories.User
         {
             var result = await _userManager.CreateAsync(newUser, newUser.PasswordHash!);
             return newUser;
-
         }
 
         public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
@@ -35,7 +34,6 @@ namespace Infrastructure_Layer.Repositories.User
         public async Task<UserModel> GetUserByEmailAsync(string email)
         {
             var user = await _userManager.FindByEmailAsync(email);
-
             return user!;
         }
     }
