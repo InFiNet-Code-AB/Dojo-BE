@@ -6,32 +6,24 @@ namespace Infrastructure_Layer.Repositories.User
 {
     public class UserRepository : IUserRepository
     {
+        public Task DeleteUserAsync(string userId)
         {
-            _userManager = userManager;
-        }
-        public async Task<UserModel> RegisterUserAsync(UserModel newUser)
-        {
-            var result = await _userManager.CreateAsync(newUser, newUser.PasswordHash!);
-            return newUser;
-
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
+        public Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
-            return await _userManager.Users.ToListAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task DeleteUserAsync(string userId)
+        public Task<UserModel> GetUserByEmailAsync(string email)
         {
-            var user = await _userManager.FindByIdAsync(userId);
-            var result = await _userManager.DeleteAsync(user!);
+            throw new NotImplementedException();
         }
 
-        public async Task<UserModel> GetUserByEmailAsync(string email)
+        public Task<UserModel> RegisterUserAsync(UserModel newUser)
         {
-            var user = await _userManager.FindByEmailAsync(email);
-
-            return user!;
+            throw new NotImplementedException();
         }
     }
 }
