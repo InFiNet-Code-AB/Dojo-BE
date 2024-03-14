@@ -6,12 +6,12 @@ namespace Application_Layer.Commands.UpdateUser
 {
     public class UpdateUserCommand : IRequest<UserModel>
     {
-        public UpdatingUserDTO UpdatedUser { get; }
-        public Guid Id { get; }
-        public UpdateUserCommand(UpdatingUserDTO updateUser, Guid id) 
+        public UpdatingUserDTO UpdatingUserInfo { get; }
+        public string Email { get; }
+        public UpdateUserCommand(UpdatingUserDTO updateUser, string email)
         {
-           UpdatedUser = updateUser;
-           Id = id;
+            UpdatingUserInfo = updateUser;
+            Email = email;
         }
     }
 }
