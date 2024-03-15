@@ -8,7 +8,7 @@ namespace Application_Layer.Commands.UpdateUser
     {
         public UpdatingUserDTO UpdatingUserInfo { get; }
         public string Email { get; }
-        public UpdateUserCommand(UpdatingUserDTO updateUser, string email) 
+        public UpdateUserCommand(UpdatingUserDTO updateUser, string email)
         {
             UpdatingUserInfo = updateUser;
             Email = email;
