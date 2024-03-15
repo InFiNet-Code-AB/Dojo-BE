@@ -1,4 +1,4 @@
-using Domain_Layer.Models.UserModel;
+﻿using Domain_Layer.Models.UserModel;
 using Infrastructure_Layer.Database;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -20,7 +20,6 @@ namespace Infrastructure_Layer.Repositories.User
             return newUser;
 
         }
-
         public async Task<IEnumerable<UserModel>> GetAllUsersAsync()
         {
             return await _userManager.Users.ToListAsync();
