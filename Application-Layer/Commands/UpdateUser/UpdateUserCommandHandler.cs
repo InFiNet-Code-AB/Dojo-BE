@@ -25,14 +25,12 @@ namespace Application_Layer.Commands.UpdateUser
             try
             {
                  userToUpdate = _mapper.Map<UserModel>(request.UpdatingUserInfo);
-
-                var updatedUser = await _userRepository.UpdateUserAsync(userToUpdate);
+                 var updatedUser = await _userRepository.UpdateUserAsync(userToUpdate);
 
                 return updatedUser;
             }
             catch (Exception ex)
             {
-
                 Log.Error("An error occurred while updating user inforamtion.", ex);
                 throw;
             }
