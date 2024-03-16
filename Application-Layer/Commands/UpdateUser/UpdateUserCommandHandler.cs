@@ -17,10 +17,10 @@ namespace Application_Layer.Commands.UpdateUser
         }
         public async Task<UserModel> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
         {
-            var userToUpdate = await _userRepository.GetUserByEmailAsync(request.UsersEmail);
+            var userToUpdate = await _userRepository.GetUserByEmailAsync(request.UpdatingUserInfo.Email);
             if (userToUpdate == null)
             {
-                throw new ArgumentNullException($"User with E-mail {request.UsersEmail} does not exist in the system!");
+                throw new ArgumentNullException($"User with E-mail {request.UpdatingUserInfo.Email} does not exist in the system!");
             }
             try
             {
