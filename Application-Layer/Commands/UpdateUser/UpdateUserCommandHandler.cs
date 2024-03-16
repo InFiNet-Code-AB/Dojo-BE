@@ -24,7 +24,7 @@ namespace Application_Layer.Commands.UpdateUser
             }
             try
             {
-                userToUpdate = _mapper.Map<UserModel>(request.UpdatingUserInfo);
+                 userToUpdate = _mapper.Map<UserModel>(request.UpdatingUserInfo);
 
                 var updatedUser = await _userRepository.UpdateUserAsync(userToUpdate);
 
