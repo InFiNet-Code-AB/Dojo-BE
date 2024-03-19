@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Domain_Layer.Models.UserModel;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 namespace Application_Layer.Queries.GetUserById
 {
-    public class GetUserByIdQuery : IRequest<IdentityUser>
+    public class GetUserByIdQuery : IRequest<UserModel>
     {
         public string UserId { get; private set; }
         public GetUserByIdQuery(string userId)
