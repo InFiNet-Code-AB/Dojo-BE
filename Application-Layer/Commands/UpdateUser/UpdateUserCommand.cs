@@ -7,9 +7,11 @@ namespace Application_Layer.Commands.UpdateUser
     public class UpdateUserCommand : IRequest<UserModel>
     {
         public UpdatingUserDTO UpdatingUserInfo { get; }
-        public UpdateUserCommand(UpdatingUserDTO updateUser)
+        public string UserId { get; }
+        public UpdateUserCommand(UpdatingUserDTO updateUser, string userId)
         {
             UpdatingUserInfo = updateUser;
+            UserId = userId;
         }
     }
 }

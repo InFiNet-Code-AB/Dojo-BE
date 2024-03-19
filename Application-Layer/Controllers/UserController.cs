@@ -8,7 +8,6 @@ using Application_Layer.Queries.LoginUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Application_Layer.Controllers
 {
     public class UserController : ControllerBase
@@ -101,31 +100,32 @@ namespace Application_Layer.Controllers
                 return BadRequest(ex.Message);
             }
         }
+        [Authorize]
+        [HttpPut("updateUser")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdatingUserDTO userDto)
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var command = new UpdateUserCommand(userDto, userId);
 
-        //[Authorize]
-        //[HttpPut("updateUser")]
-        //public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
-        //{
-        //    // hämtar den inloggade användarens ID från claim
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            try
+            {
+                var result = await _mediator.Send(command);
+                if (result != null)
+                {
+                    return Ok(result);
+                }
+                else
+                {
+                    return NotFound("User not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //    // jämför om det ID som skickats med kommandot matchar den inloggade användarens ID
-        //    if (userId != command.UserId.ToString())
-        //    {
-        //        return Unauthorized("Du kan bara uppdatera din egen information.");
-        //    }
 
-        //   var result = await _mediator.Send(command);
-
-        //    try
-        //    {
-        //        return Ok(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
 
         //[Authorize]
         //[HttpDelete("deleteUser/{userId}")]
