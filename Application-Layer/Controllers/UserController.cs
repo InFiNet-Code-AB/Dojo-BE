@@ -1,5 +1,9 @@
 ﻿using System.Security.Claims;
+using Application_Layer.Commands.RegisterNewUser;
+using Application_Layer.Commands.UpdateUser;
+using Application_Layer.DTO_s;
 using Application_Layer.Queries.GetAllUsers;
+using Application_Layer.Queries.GetUserById;
 using Application_Layer.Queries.LoginUser;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -16,20 +20,20 @@ namespace Application_Layer.Controllers
             _mediator = mediator;
         }
 
-        //[AllowAnonymous]
-        //[HttpPost("register")]
-        //public async Task<ActionResult> Register([FromBody] RegisterUserDto userDto)
-        //{
-        //    try
-        //    {
-        //        return await _mediator.Send(new RegisterUserCommand(userDto));
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public async Task<ActionResult> Register([FromBody] RegisterUserDTO userDto)
+        {
+            try
+            {
+                return Ok(await _mediator.Send(new RegisterUserCommand(userDto)));
 
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         [AllowAnonymous]
         [HttpPost("login")]
@@ -54,25 +58,25 @@ namespace Application_Layer.Controllers
             }
         }
 
-        //[HttpGet("{id}")]
-        //public async Task<IActionResult> GetUserById(string id)
-        //{
-        //    var user = await _mediator.Send(new GetUserByIdCommand(id));
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            var user = await _mediator.Send(new GetUserByIdQuery(id));
 
-        //    if (user != null)
-        //    {
-        //        return Ok(user); 
-        //    }
-        //    else
-        //    {
-        //        return NotFound($"Användaren med ID {id} hittades inte.");
-        //    }
-        //}
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound($"Användaren med ID {id} hittades inte.");
+            }
+        }
 
         //[HttpGet("by-email/{email}")]
         //public async Task<IActionResult> GetUserByEmail(string email)
         //{
-        //    var user = await _mediator.Send(new GetUserByEmailCommand(email));
+        //    var user = await _mediator.Send(new GetUserByEmailQuery(email));
 
         //    if (user != null)
         //    {
@@ -100,7 +104,7 @@ namespace Application_Layer.Controllers
 
         //[Authorize]
         //[HttpPut("updateUser")]
-        //public async Task<IActionResult> UpdateUser([FromBody] UpdateUserByIdCommand command)
+        //public async Task<IActionResult> UpdateUser([FromBody] UpdateUserCommand command)
         //{
         //    // hämtar den inloggade användarens ID från claim
         //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -111,9 +115,11 @@ namespace Application_Layer.Controllers
         //        return Unauthorized("Du kan bara uppdatera din egen information.");
         //    }
 
+        //   var result = await _mediator.Send(command);
+
         //    try
         //    {
-        //        return await _mediator.Send(command);
+        //        return Ok(result);
         //    }
         //    catch (Exception ex)
         //    {

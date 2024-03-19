@@ -29,12 +29,9 @@
 
   <ItemGroup>
     <Folder Include="Commands\DeleteUser\" />
-<<<<<<< HEAD
     <Folder Include="Commands\Register\" />
     <Folder Include="Commands\UpdateUser\" />
     <Folder Include="Queries\GetAllUsers\" />
-=======
->>>>>>> development
     <Folder Include="Queries\GetUserByEmail\" />
     <Folder Include="Queries\Login\" />
   </ItemGroup>
