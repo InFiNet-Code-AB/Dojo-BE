@@ -4,6 +4,7 @@ using Application_Layer.Commands.RegisterNewUser;
 using Application_Layer.Commands.UpdateUser;
 using Application_Layer.DTO_s;
 using Application_Layer.Queries.GetAllUsers;
+using Application_Layer.Queries.GetUserByEmail;
 using Application_Layer.Queries.GetUserById;
 using Application_Layer.Queries.LoginUser;
 using MediatR;
@@ -75,20 +76,20 @@ namespace Application_Layer.Controllers
             }
         }
 
-        //[HttpGet("by-email/{email}")]
-        //public async Task<IActionResult> GetUserByEmail(string email)
-        //{
-        //    var user = await _mediator.Send(new GetUserByEmailQuery(email));
+        [HttpGet("by-email/{email}")]
+        public async Task<IActionResult> GetUserByEmail(string email)
+        {
+            var user = await _mediator.Send(new GetUserByEmailQuery(email));
 
-        //    if (user != null)
-        //    {
-        //        return Ok(user);  // Eller anpassa till en DTO som tidigare nämnt
-        //    }
-        //    else
-        //    {
-        //        return NotFound($"Användaren med e-postadressen {email} hittades inte.");
-        //    }
-        //}
+            if (user != null)
+            {
+                return Ok(user);
+            }
+            else
+            {
+                return NotFound($"Användaren med e-postadressen {email} hittades inte.");
+            }
+        }
 
         [HttpGet]
         [Route("GetAllUsers")]
