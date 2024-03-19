@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Application_Layer.DTO_s
 {
     public class RegisterUserDTO
     {
+        [Required]
+        [RegularExpression(@"^(Teacher|Student)$", ErrorMessage = "Invalid role, you can choose between Teacher or Student.")]
+        public string Role { get; set; } = string.Empty;
+
         [Required]
         public string FirstName { get; set; } = string.Empty;
 

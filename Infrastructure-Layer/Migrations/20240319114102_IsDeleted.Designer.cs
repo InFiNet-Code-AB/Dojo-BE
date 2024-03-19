@@ -4,6 +4,7 @@ using Infrastructure_Layer.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure_Layer.Migrations
 {
     [DbContext(typeof(DojoDBContext))]
-    partial class DojoDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240319114102_IsDeleted")]
+    partial class IsDeleted
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -236,6 +239,9 @@ namespace Infrastructure_Layer.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
@@ -249,15 +255,16 @@ namespace Infrastructure_Layer.Migrations
                         {
                             Id = "08260479-52a0-4c0e-a588-274101a2c3be",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "83bde5c0-5753-4c62-a302-f7fd1d6b23b6",
+                            ConcurrencyStamp = "edd9894f-1db9-4c1d-9d93-f4ecb00c9209",
                             Email = "bojan@infinet.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEB47OpMVP/lQuF3HBJKI+jvTmF0O9XCs0EyIqpOyrtAqaQgT16/fD9NhB2HGWQweYA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEx6tPpusYdc1PZqrpxXGxkeSGNzCiiQeg3VuQ6NPeEpSpxEgGT8F5Du0kyjoi0z+Q==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "3020c37d-3f2b-460e-b1a5-f2d9fc8d7855",
+                            SecurityStamp = "c35ce058-5e92-467e-84b9-2b5b8186a249",
                             TwoFactorEnabled = false,
                             FirstName = "Bojan",
+                            IsDeleted = false,
                             LastName = "Mirkovic",
                             Role = "User"
                         },
@@ -265,15 +272,16 @@ namespace Infrastructure_Layer.Migrations
                         {
                             Id = "047425eb-15a5-4310-9d25-e281ab036868",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7a19725b-0c1b-49f3-ab8c-2707dd9bbf45",
+                            ConcurrencyStamp = "e7144dd2-7b18-47de-bca6-a5c3f9290f2f",
                             Email = "elliot@infinet.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEGV9VaM0aMjpy8F5I0mlYO7e78wnuXFZlO0sxD9E5a/5NHV14wpeHO/RTE8OzQcpkQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKSq9B34nVKCfnooLXxchwxzxAyZM5QtlrqesPTbtjlQBb83iKVahN9Lc/QE16ffdQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "94675d88-b8bb-49f2-89e6-9c1857e14a97",
+                            SecurityStamp = "1c3c8567-a16b-4eee-ac14-9e15fb77c3c0",
                             TwoFactorEnabled = false,
                             FirstName = "Elliot",
+                            IsDeleted = false,
                             LastName = "Dahlin",
                             Role = "User"
                         },
@@ -281,15 +289,16 @@ namespace Infrastructure_Layer.Migrations
                         {
                             Id = "047425eb-15a5-4310-9d25-e281ab036869",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "3d1e9ecd-0cc9-4c5c-870f-a944c6771946",
+                            ConcurrencyStamp = "9d5b6dc6-1905-40d6-ab39-4174f68a4021",
                             Email = "kevin@infinet.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
-                            PasswordHash = "AQAAAAIAAYagAAAAEMX0fGem1LA/+wuo5Z0xfhEluNQhY82hqAeMXSsQe80U6aQT7SoF+AF5C/iHEH9pmQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEJ22DQHHojGvSTasl1MhGGQso0W9LKQI8ohoawJJw1ZaxJtjQaZEWZ9scuXdG7Hi8A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f0d26140-2c0c-493a-ab01-9b85d5b3da4a",
+                            SecurityStamp = "d3a658ce-7489-4513-8593-c87166de5076",
                             TwoFactorEnabled = false,
                             FirstName = "Kevin",
+                            IsDeleted = false,
                             LastName = "Jorgensen",
                             Role = "User"
                         });

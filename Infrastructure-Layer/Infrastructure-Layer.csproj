@@ -30,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Repositories\User\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
 </Project>
