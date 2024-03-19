@@ -1,4 +1,5 @@
 ﻿using System.Security.Claims;
+using Application_Layer.Commands.DeleteUser;
 using Application_Layer.Commands.RegisterNewUser;
 using Application_Layer.Commands.UpdateUser;
 using Application_Layer.DTO_s;
@@ -125,32 +126,27 @@ namespace Application_Layer.Controllers
             }
         }
 
+        [Authorize]
+        [HttpDelete("deleteUser")]
+        public async Task<IActionResult> DeleteUser()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized("User is not recognized.");
+            }
 
+            var command = new DeleteUserCommand(userId);
+            var result = await _mediator.Send(command);
 
-        //[Authorize]
-        //[HttpDelete("deleteUser/{userId}")]
-        //public async Task<IActionResult> DeleteUser()
-        //{
-        //    var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        //    var command = new DeleteUserCommand(userId);
-        //    var result = await _mediator.Send(command);
-
-        //    if (result.Success)
-        //    {
-        //        return Ok(new { result.Message, result.UserId, result.Email });
-        //    }
-        //    else
-        //    {
-        //        if (result.Message == "User not found")
-        //        {
-        //            return NotFound(result.Message);
-        //        }
-        //        else
-        //        {
-        //            return BadRequest(result.Message);
-        //        }
-        //    }
-        //}
-
+            if (result)
+            {
+                return Ok("User successfully deleted.");
+            }
+            else
+            {
+                return BadRequest("Failed to delete the user.");
+            }
+        }
     }
 }
