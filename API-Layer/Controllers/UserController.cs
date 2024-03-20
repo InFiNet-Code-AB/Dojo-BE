@@ -40,11 +40,11 @@ namespace Application_Layer.Controllers
 
         [AllowAnonymous]
         [HttpPost("login")]
-        public async Task<IActionResult> Login(string email, string password)
+        public async Task<IActionResult> Login([FromBody] LoginUserDTO loginUserDTO)
         {
             try
             {
-                var loginResult = await _mediator.Send(new LoginUserQuery { Email = email, Password = password });
+                var loginResult = await _mediator.Send(new LoginUserQuery(loginUserDTO));
 
                 if (loginResult.Successful)
                 {
@@ -104,12 +104,12 @@ namespace Application_Layer.Controllers
                 return BadRequest(ex.Message);
             }
         }
-        [Authorize]
+        //[Authorize]
         [HttpPut("updateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] UpdatingUserDTO userDto)
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var command = new UpdateUserCommand(userDto, userId);
+            var command = new UpdateUserCommand(userDto);
 
             try
             {
@@ -128,12 +128,11 @@ namespace Application_Layer.Controllers
                 return BadRequest(ex.Message);
             }
         }
-
-        [Authorize]
-        [HttpDelete("deleteUser")]
-        public async Task<IActionResult> DeleteUser()
+        //[Authorize]
+        [HttpDelete("deleteUser/{userId}")]
+        public async Task<IActionResult> DeleteUser(string userId)
         {
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             if (string.IsNullOrEmpty(userId))
             {
                 return Unauthorized("User is not recognized.");
